@@ -65,8 +65,8 @@
   # Git 配置
   programs.git = {
     enable = true;
-    userName = "zero"; # !!! IMPORTANT: Change this to "laomei" or desired git username
-    userEmail = "zero@laomei.site"; # !!! IMPORTANT: Change this to "laomei's" email
+    userName = "laomei"; # !!! IMPORTANT: Change this to "laomei" or desired git username
+    userEmail = "laomei@laomei.site"; # !!! IMPORTANT: Change this to "laomei's" email
     extraConfig = {
       init.defaultBranch = "main";
       # 你可以在这里添加更多的 Git 配置

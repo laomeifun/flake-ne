@@ -22,7 +22,7 @@
   outputs = { self, nixpkgs, home-manager, nixos-wsl, ... }@inputs:
     let
       # --- 通用设置 ---
-      username = "zero"; # Home Manager 用户名
+      username = "laomei"; # Home Manager 用户名
       system = "x86_64-linux"; # 目标系统架构
 
       # 创建一个 pkgs 实例，方便在各处使用
@@ -57,10 +57,11 @@
           inherit system;
           specialArgs = { inherit inputs username pkgs; }; # 重新传递 pkgs 给模块
           modules = [
-            # nixpkgs.nixosModules.readOnlyPkgs          # 移除 readOnlyPkgs 模块
-            # { nixpkgs.pkgs = pkgs; }                   # 移除指定 pkgs
-            ./system/nixos-wsl/wsl.nix          # WSL 的主配置
-            home-manager.nixosModules.home-manager     # 集成 Home Manager
+            # inputs.nixpkgs.nixosModules.readOnlyPkgs # Temporarily commented out
+            # { nixpkgs.pkgs = pkgs; }                 # Temporarily commented out
+            inputs.nixos-wsl.nixosModules.default   # Restored
+            ./system/nixos-wsl/wsl.nix
+            home-manager.nixosModules.home-manager
             homeManagerNixosModule                     # 应用 Home Manager 用户配置
           ];
         };

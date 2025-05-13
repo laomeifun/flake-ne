@@ -3,7 +3,7 @@
 {
   imports = [
     ../my-nixos-machine/common.nix              # 导入通用配置
-    inputs.nixos-wsl.nixosModules.default # 从 Flake 输入导入 NixOS-WSL 模块
+    # inputs.nixos-wsl.nixosModules.default # 从 Flake 输入导入 NixOS-WSL 模块
   ];
 
   networking.hostName = "nixos-wsl"; # WSL 特定的主机名

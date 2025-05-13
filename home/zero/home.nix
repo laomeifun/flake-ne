@@ -1,10 +1,10 @@
 # home/zero/home.nix
-{ config, pkgs, inputs, username, ... }: # 'inputs' 和 'username' 从 specialArgs 传入 (如果通过 flake 传递)
+{ config, pkgs, inputs, username, lib, ... }: # 'inputs' 和 'username' 从 specialArgs 传入 (如果通过 flake 传递)
 
 {
   # Home Manager 需要知道这个配置是给哪个用户的。
   home.username = "${username}"; # 使用从 flake 传递过来的 username
-  home.homeDirectory = "/home/${username}";
+  home.homeDirectory = lib.mkForce "/home/${username}";
 
   # Nixpkgs 配置 (当 useGlobalPkgs = true 时，此部分应在系统级别配置)
   # nixpkgs.config = {
