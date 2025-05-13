@@ -35,7 +35,7 @@
       homeManagerNixosModule = {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.extraSpecialArgs = { inherit inputs username pkgs; }; # 传递 pkgs
+        home-manager.extraSpecialArgs = { inherit inputs username; };
         home-manager.users.${username} = import ./home/${username}/home.nix;
       };
 
@@ -55,13 +55,12 @@
 
         "nixos-wsl" = nixpkgs.lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit inputs username pkgs; }; # 重新传递 pkgs 给模块
+          specialArgs = { inherit inputs username; }; # pkgs removed
           modules = [
-            # inputs.nixpkgs.nixosModules.readOnlyPkgs # Remains commented out
-            { nixpkgs.pkgs = pkgs; }                 # Uncommented, restored
+            { nixpkgs.config.allowUnfree = true; } # Let NixOS configure its pkgs
             inputs.nixos-wsl.nixosModules.default
-            ./system/nixos-wsl/wsl.nix
-            home-manager.nixosModules.home-manager
+            ./system/nixos-wsl/wsl.nix          # WSL 的主配置
+            home-manager.nixosModules.home-manager     # 集成 Home Manager
             homeManagerNixosModule                     # 应用 Home Manager 用户配置
           ];
         };
