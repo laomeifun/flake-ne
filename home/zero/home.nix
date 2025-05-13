@@ -25,12 +25,16 @@
     ripgrep
     fd
 
+
     # # 常用工具
     # firefox
     # htop
-    # curl
-    # wget
-
+    curl
+    wget
+    
+    #python
+    python3
+    uv
     # # (可选) Nix 相关工具
     # nix-output-monitor # nom
   ];
