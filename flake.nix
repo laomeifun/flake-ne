@@ -55,8 +55,10 @@
 
         "nixos-wsl" = nixpkgs.lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit inputs username pkgs; }; # 传递 pkgs 给模块
+          specialArgs = { inherit inputs username pkgs; }; # 重新传递 pkgs 给模块
           modules = [
+            # nixpkgs.nixosModules.readOnlyPkgs          # 移除 readOnlyPkgs 模块
+            # { nixpkgs.pkgs = pkgs; }                   # 移除指定 pkgs
             ./system/my-nixos-machine/wsl.nix          # WSL 的主配置
             home-manager.nixosModules.home-manager     # 集成 Home Manager
             homeManagerNixosModule                     # 应用 Home Manager 用户配置
