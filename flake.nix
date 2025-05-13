@@ -73,12 +73,5 @@
         modules = [ ./home/${username}/home.nix ];
         extraSpecialArgs = { inherit inputs username pkgs; }; # 传递 pkgs
       };
-
-      # Configuration for user laomei
-      homeConfigurations."laomei" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [ ./home/laomei/home.nix ];
-        extraSpecialArgs = { inherit inputs pkgs; username = "laomei"; }; # Pass username "laomei"
-      };
     };
 }
