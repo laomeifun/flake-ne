@@ -35,7 +35,7 @@
     #python
     python3
     uv
-    nixfmt
+    nixfmt-rfc-style
     # # (可选) Nix 相关工具
     # nix-output-monitor # nom
   ];
