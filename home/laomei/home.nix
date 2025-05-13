@@ -43,6 +43,8 @@
     nixfmt-classic # Renamed from nixfmt
     # # (可选) Nix 相关工具
     # nix-output-monitor # nom
+
+    zed-editor
   ];
 
   # Shell 配置 (以 Zsh 为例)
