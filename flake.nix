@@ -57,9 +57,9 @@
           inherit system;
           specialArgs = { inherit inputs username pkgs; }; # 重新传递 pkgs 给模块
           modules = [
-            # inputs.nixpkgs.nixosModules.readOnlyPkgs # Temporarily commented out
-            # { nixpkgs.pkgs = pkgs; }                 # Temporarily commented out
-            inputs.nixos-wsl.nixosModules.default   # Restored
+            # inputs.nixpkgs.nixosModules.readOnlyPkgs # Remains commented out
+            { nixpkgs.pkgs = pkgs; }                 # Uncommented, restored
+            inputs.nixos-wsl.nixosModules.default
             ./system/nixos-wsl/wsl.nix
             home-manager.nixosModules.home-manager
             homeManagerNixosModule                     # 应用 Home Manager 用户配置
