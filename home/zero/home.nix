@@ -35,6 +35,7 @@
     #python
     python3
     uv
+    nixfmt
     # # (可选) Nix 相关工具
     # nix-output-monitor # nom
   ];
