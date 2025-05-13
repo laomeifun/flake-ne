@@ -3,7 +3,7 @@
   description = "My NixOS and Home Manager configurations";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable"; # 或者一个稳定分支如 "nixos-23.11"
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -47,7 +47,7 @@
           inherit system;
           specialArgs = { inherit inputs username pkgs; }; # 传递 pkgs 给模块
           modules = [
-            ./system/my-nixos-machine/configuration.nix # 普通 PC 的主配置
+            ./system/nixos-pc/configuration.nix # 普通 PC 的主配置
             home-manager.nixosModules.home-manager     # 集成 Home Manager
             homeManagerNixosModule                     # 应用 Home Manager 用户配置
           ];
@@ -59,7 +59,7 @@
           modules = [
             # nixpkgs.nixosModules.readOnlyPkgs          # 移除 readOnlyPkgs 模块
             # { nixpkgs.pkgs = pkgs; }                   # 移除指定 pkgs
-            ./system/my-nixos-machine/wsl.nix          # WSL 的主配置
+            ./system/nixos-wsl/wsl.nix          # WSL 的主配置
             home-manager.nixosModules.home-manager     # 集成 Home Manager
             homeManagerNixosModule                     # 应用 Home Manager 用户配置
           ];
@@ -72,6 +72,13 @@
         inherit pkgs; # 使用上面定义的 pkgs
         modules = [ ./home/${username}/home.nix ];
         extraSpecialArgs = { inherit inputs username pkgs; }; # 传递 pkgs
+      };
+
+      # Configuration for user laomei
+      homeConfigurations."laomei" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [ ./home/laomei/home.nix ];
+        extraSpecialArgs = { inherit inputs pkgs; username = "laomei"; }; # Pass username "laomei"
       };
     };
 }

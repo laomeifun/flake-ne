@@ -8,7 +8,7 @@
   time.timeZone = "Asia/Shanghai";
 
   # 通用系统用户 zero 的基本定义
-  users.users.zero = {
+  users.users.laomei = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ]; # wheel 用于 sudo
     shell = pkgs.zsh; # 设置默认 shell 为 zsh

@@ -2,8 +2,8 @@
 { config, pkgs, lib, inputs, ... }:
 {
   imports = [
-    ./common.nix                 # 导入通用配置
-    ./hardware-configuration.nix # PC 需要硬件配置
+    ../my-nixos-machine/common.nix                 # 导入通用配置
+    ../my-nixos-machine/hardware-configuration.nix # PC 需要硬件配置
   ];
 
   networking.hostName = "nixos-pc"; # PC 特定的主机名
@@ -29,4 +29,4 @@
 
   # PC 特定的 stateVersion (如果不同于 common.nix)
   # system.stateVersion = "25.05"; # 确保与首次安装或期望版本一致
-}
+} 
