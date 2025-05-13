@@ -44,7 +44,7 @@
     oh-my-zsh = {
       enable = true;
       plugins = [ "git" "fzf" ];
-      # theme = "agnoster";
+      theme = "robbyrussell";
     };
     # shellAliases = {
     #   ll = "ls -l";

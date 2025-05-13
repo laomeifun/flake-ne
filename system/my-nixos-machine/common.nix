@@ -2,7 +2,7 @@
 {
   # 基本 Nix 设置
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nixpkgs.config.allowUnfree = true;
+  # nixpkgs.config.allowUnfree = true; # 已在 flake.nix 中通过 pkgs 定义，此处移除
 
   # 时区
   time.timeZone = "Asia/Shanghai";
