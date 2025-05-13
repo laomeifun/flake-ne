@@ -26,6 +26,7 @@
     vim
     zsh # 确保 zsh 包本身被安装
     # 其他通用工具
+    home-manager # Home Manager 作为系统包
   ];
 
   # 通用服务
